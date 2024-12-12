@@ -17,10 +17,10 @@ test('GET /api with no login', async (t) => {
 test('GET /api with cookie', async (t) => {
   const app = await build(t)
 
-  const res = await app.injectWithLogin('basic', {
+  const res = await app.injectWithLogin('basic@example.com', {
     url: '/api'
   })
 
   assert.equal(res.statusCode, 200)
-  assert.ok(JSON.parse(res.payload).message.startsWith('Hello basic!'))
+  assert.ok(JSON.parse(res.payload).message.startsWith('Hello basic@example.com!'))
 })
